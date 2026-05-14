@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todo list 로컬 저장하기</title>
+    <style>
+        body.dark{
+            color: #95ff58;
+            background-color: rgb(59, 59, 65);
+        }
+        button{
+            color: #333;
+            background-color: #eee;
+        }
+        button.dark{
+            color: #fff;
+            background-color: #111;
+        }
+    </style>
+  </head>
+  <body>
+    <button id="darkMod">🌜다크모드</button>
+    <div class="box">
+      <h1>todo list</h1>
+      <input type="text" id="todoInput" placeholder="할 일 입력" />
+      <button id="todoBtn">추가</button>
+      <ul id="todoList">
+        <!-- js 출력 -->
+      </ul>
+      <button class="allDel">전체삭제</button>
+    </div>
+
+    <script>
+      const todoInput = document.querySelector("#todoInput");
+      const todoBtn = document.querySelector("#todoBtn");
+      const todoList = document.querySelector("#todoList");
+      const allDel = document.querySelector(".allDel");
+      const darkMod = document.querySelector("#darkMod");
+      const buttons = document.querySelectorAll("button");
+
+        // 다크모드 변경
+        // 저장된 테마 가져오기
+        const theme = localStorage.getItem("theme")
+        // 처음 실행할 때
+        if(theme === "dark"){
+            document.body.classList.add("dark")
+            buttons.forEach((btn)=>{
+                btn.classList.add("dark")
+            })
+            darkMod.textContent = "🌞라이트모드"
+        }else{
+            darkMod.textContent = "🌜다크모드"
+        }
+        // 버튼 클릭했을 때 
+        darkMod.addEventListener("click", ()=>{
+            // body에 dark클래스를 더해준다
+            document.body.classList.toggle("dark")
+            buttons.forEach((btn)=>{
+                btn.classList.toggle("dark")
+            })
+            // 로컬스토리지 저장
+            if(document.body.classList.contains("dark")){
+                localStorage.setItem("theme", "dark")
+                darkMod.textContent = "🌞라이트모드"
+            }else{
+                localStorage.setItem("theme", "light")
+                darkMod.textContent = "🌜다크모드"
+            }
+        })
+
+      // todo 배열
+      let todos = JSON.parse(localStorage.getItem("todos")) || [];
+      // 추가버튼 클릭
+      todoBtn.addEventListener("click", () => {
+        // 빈칸 방지
+        if (todoInput.value.trim() === "") {
+          alert("할 일을 작성해 주세여");
+          return;
+        }
+        // q배열 추가
+        todos.push(todoInput.value)
+        // 저장
+        localStorage.setItem("todos", JSON.stringify(todos))
+        // 화면 출력
+        renderTodo()
+        // 입력창 초기화
+        todoInput.value = ""
+      });
+      // todo 출력 함수
+      function renderTodo(){
+        todoList.innerHTML = ""
+        todos.forEach((item, index)=>{
+            todoList.innerHTML += `<li>${index + 1}. ${item} <button onclick="removeTodo(${index})">삭제</button></li>`
+        })
+      }
+    //   삭제 함수
+    function removeTodo(index){
+        // 배열 삭제
+        todos.splice(index, 1)
+        // 다시 저장
+        localStorage.setItem("todos", JSON.stringify(todos))
+        // 삭제 한 내용을 화면 출력
+        renderTodo()
+    }
+    // 전체 삭제
+    allDel.addEventListener("click", ()=>{
+        // 로컬스토리지에 삭제
+        localStorage.removeItem("todos")
+        // 배열 지우기
+        todos = []
+        renderTodo()
+    })
+    // 출력 함수
+      renderTodo()
+    </script>
+  </body>
+</html>

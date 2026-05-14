@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬스토리지 배열 객체 저장하기</title>
+</head>
+<body>
+    <button id="apple">사과 담기</button>
+    <h2 id="cart">
+        <!-- js 출력 -->
+    </h2>
+
+    <script>
+        const apple = document.querySelector("#apple")
+        const cart = document.querySelector("#cart")
+        // 만약 저장된 데이터가 없으면 [] 빈 배열 사용
+        // 다시 배열처럼 사용하려면 JSON.parse()
+        let items = JSON.parse(localStorage.getItem("cart")) || []
+        // 상품 담기
+        apple.addEventListener("click", ()=>{
+            // 배열에 사과를 추가
+            items.push("사과🍎")
+            // 로컬스토리지는 문자열만 저장 가능함
+            // 꼭 stringfy 사용해야 함
+            localStorage.setItem("cart" , JSON.stringify(items))
+            render()
+        })
+        // 출력 함수
+        function render(){
+            cart.innerText = items.join(",")
+        }
+        // JSON.parse()
+        // 문자열(string)을 배열(array)이나 객체로 변환하는 기능
+        // ex) 
+        // 문자열
+        let data = '["사과🍎", "바나나🍌", "포도🍇", "망고🥭"]' // '' 안에 있어 문자열로 인식
+        // JSON.parse()로 문자열을 배열로 변환
+        let result = JSON.parse(data)
+    </script>
+</body>
+</html>
