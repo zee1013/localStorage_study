@@ -1,0 +1,182 @@
+ * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #f3f6fb;
+        font-family: Pretendard;
+        padding: 40px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: auto;
+      }
+
+        .stats {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .stat-box {
+        flex: 1;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .stat-box h2 {
+        font-size: 28px;
+        margin-top: 10px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #222;
+      }
+
+      .form-box {
+        background: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+
+      textarea {
+        height: 100px;
+        resize: none;
+      }
+
+      .btn-wrap {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-top: 20px;
+      }
+        .all-delete-btn {
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+        background: #111827;
+        color: white;
+        cursor: pointer;
+      }
+
+      .all-delete-btn:hover {
+        background: #000;
+      }
+       .save-btn {
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        background: #4f46e5;
+        color: white;
+        cursor: pointer;
+      }
+
+      .save-btn:hover {
+        background: #4338ca;
+      }
+      /* 출력 카드 */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  animation: fade 0.4s;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.mood {
+  font-size: 30px;
+}
+
+.weather {
+  font-size: 25px;
+}
+
+.date {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.content {
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.card-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn {
+  background: #f59e0b;
+  color: white;
+  padding: 10px;
+ border: none;
+ border-radius: 10px;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  padding: 10px;
+ border: none;
+ border-radius: 10px;
+}
+
+.empty {
+  text-align: center;
+  color: gray;
+  margin-top: 50px;
+}

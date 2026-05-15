@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감정기록장</title>
+    <link rel="stylesheet" href="css/emotion.css">
+    <script src="js/emotion.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🛸오늘의 감정 기록🌠</h1>
+        <!-- 상태 -->
+         <div class="stats">
+            <div class="stat-box">
+                총 기록
+                <h2 id="totalCount">0</h2>
+            </div>
+            <div class="stat-box">
+                최근 기분
+                <h2 class="recentMood">-</h2>
+            </div>
+         </div>
+         <!-- form -->
+          <form class="form-box">
+            <!-- 날짜 -->
+             <div class="form-group">
+                <label>날짜</label>
+                <input type="date" id="date">
+             </div>
+             <!-- 기분 -->
+              <div class="form-group">
+                <label>기분</label>
+                <select id="mood">
+                    <option value="😊">😊 행복</option>
+            <option value="😴">😴 피곤</option>
+            <option value="😡">😡 화남</option>
+            <option value="😭">😭 슬픔</option>
+            <option value="😍">😍 설렘</option>
+                </select>
+              </div>
+             <!-- 날씨 -->
+              <div class="form-group">
+                <label>오늘의 날씨</label>
+                <select id="weather">
+            <option value="☀">☀ 맑음</option>
+            <option value="🌧">🌧 비</option>
+            <option value="❄">❄ 눈</option>
+            <option value="🌥">🌥 흐림</option>
+          </select>
+              </div>
+             <!-- 메모 -->
+              <div class="form-group">
+                <label>오늘 하루는?</label>
+                <textarea id="content"></textarea>
+              </div>
+              <!-- 기록저장 -->
+               <div class="btn-wrap">
+                <button class="save-btn" id="saveBtn">기록저장</button>
+                <button class="all-delete-btn" id="allDeleteBtn">전체삭제</button>
+               </div>
+          </form>
+          <div class="cards" id="cards">
+            <!-- js 출력 -->
+             
+          </div>
+    </div>
+</body>
+</html>
